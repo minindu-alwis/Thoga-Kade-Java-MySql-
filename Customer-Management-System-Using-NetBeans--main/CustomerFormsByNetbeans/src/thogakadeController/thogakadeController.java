@@ -56,6 +56,33 @@ public class thogakadeController {
     public static String showDate() {
         return new SimpleDateFormat("yyyy/MM/dd").format(new Date());
     }
+
+
+ public static String orderIdGenerate() throws ClassNotFoundException, SQLException {
+    Connection connection = DBConnection.getInstance().getConnection();
+    String query = "SELECT MAX(id) FROM orders";
+    int maxNumericPart = 0;
+
+    try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try (java.sql.ResultSet result = statement.executeQuery()) {
+            if (result.next()) {
+                String lastOrderId = result.getString(1);
+                if (lastOrderId != null && lastOrderId.startsWith("D")) {
+                    try {
+                        maxNumericPart = Integer.parseInt(lastOrderId.substring(1));
+                    } catch (NumberFormatException e) {
+                        maxNumericPart = 0;  // Handle invalid ID format
+                    }
+                }
+            }
+        }
+    }
+
+    return String.format("D%03d", maxNumericPart + 1);
+}
+
+
+
    
    
 }

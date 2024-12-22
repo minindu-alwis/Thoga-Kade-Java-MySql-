@@ -4,6 +4,7 @@
  */
 package Main_GUI_Thoga_Kade;
 
+import java.sql.SQLException;
 import thogakadeController.thogakadeController;
 
 /**
@@ -15,12 +16,14 @@ public class mainThogaKade extends javax.swing.JFrame {
     /**
      * Creates new form mainThogaKade
      */
-    public mainThogaKade() {
+    public mainThogaKade() throws ClassNotFoundException, SQLException {
         initComponents();
         
         String todayDate=thogakadeController.showDate();
         dateTextField.setText(todayDate);
         dateTextField.setEditable(false);
+        
+        orderIdGenarated();
         
     }
 
@@ -330,4 +333,17 @@ public class mainThogaKade extends javax.swing.JFrame {
     private javax.swing.JButton removeOrderButton;
     private javax.swing.JTextField totalTextField;
     // End of variables declaration//GEN-END:variables
+
+  private void orderIdGenarated() {
+      orderIdTextField.setEditable(false);
+    try {
+        String generateOrderId = thogakadeController.orderIdGenerate();
+        orderIdTextField.setText(generateOrderId);
+    } catch (ClassNotFoundException ex) {
+        System.out.println("Class Not Found Exception: " + ex.getMessage());
+    } catch (SQLException ex) {
+        System.out.println("SQL Exception: " + ex.getMessage());
+    
+    }
+ }
 }

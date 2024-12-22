@@ -12,7 +12,7 @@ import java.sql.*;
 public class Main {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         
-        new AddCustomerForm().setVisible(true);
+        //new AddCustomerForm().setVisible(true);
         /*new SearchCustomerForm().setVisible(true);
         new DeleteCustomerForm().setVisible(true);
         new UpdateCustomerForm().setVisible(true);
