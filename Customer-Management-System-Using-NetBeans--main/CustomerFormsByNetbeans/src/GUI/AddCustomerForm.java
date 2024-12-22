@@ -5,7 +5,7 @@
 package GUI;
 
 import Customer.Customer;
-import CustomerController.CustomerController;
+import thogakadeController.thogakadeController;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -24,7 +24,7 @@ public class AddCustomerForm extends javax.swing.JFrame {
     public AddCustomerForm() throws SQLException, ClassNotFoundException {
         initComponents();
         jTextFieldid.setEditable(false);
-        jTextFieldid.setText(CustomerController.generateCustomerId());
+        jTextFieldid.setText(thogakadeController.generateCustomerId());
     }
 
     /**
@@ -169,7 +169,7 @@ public class AddCustomerForm extends javax.swing.JFrame {
         boolean isAdded = false;
 	Customer c1=new Customer(id,name,address,salary);
         try {
-        isAdded = CustomerController.addCustomer(c1);
+        isAdded = thogakadeController.addCustomer(c1);
         } catch (SQLException ex) {
             System.out.println("SQLException occurred: " + ex.getMessage());
             ex.printStackTrace(); // Detailed exception stack trace
@@ -183,7 +183,7 @@ public class AddCustomerForm extends javax.swing.JFrame {
                 jTextFieldidname.setText("");
                 jTextFieldidaddress.setText("");
                 jTextFieldidsalary.setText("");	
-                jTextFieldid.setText(CustomerController.generateCustomerId());
+                jTextFieldid.setText(thogakadeController.generateCustomerId());
             } catch (SQLException ex) {
                 Logger.getLogger(AddCustomerForm.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {

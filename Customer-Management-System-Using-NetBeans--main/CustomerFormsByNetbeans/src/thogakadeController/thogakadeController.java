@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package CustomerController;
+package thogakadeController;
 
 import Customer.Customer;
 import DBConnection.DBConnection;
@@ -14,8 +14,10 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class CustomerController {
+public class thogakadeController {
     
     public static boolean addCustomer(Customer customer) throws SQLException, ClassNotFoundException {
     Connection connection = DBConnection.getInstance().getConnection();
@@ -50,4 +52,10 @@ public class CustomerController {
         return String.format("C%03d", lastIdNumber + 1);
     }
 }   
+   
+    public static String showDate() {
+        return new SimpleDateFormat("yyyy/MM/dd").format(new Date());
+    }
+   
+   
 }
