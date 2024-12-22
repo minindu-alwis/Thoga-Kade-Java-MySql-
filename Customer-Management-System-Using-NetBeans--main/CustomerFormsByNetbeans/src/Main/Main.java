@@ -5,10 +5,6 @@
 package Main;
 import DBConnection.DBConnection;
 import GUI.AddCustomerForm;
-import GUI.DeleteCustomerForm;
-import GUI.SearchCustomerForm;
-import GUI.UpdateCustomerForm;
-import GUI.ViewCustomerForm;
 import Main_GUI_Thoga_Kade.mainThogaKade;
 import java.sql.*;
 
